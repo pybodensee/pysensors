@@ -14,6 +14,10 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-def speak(text):
-    print(text)
-    return text
+def format(myCompass):
+    
+    try:
+        compass_ = f"Compass: {myCompass.reading.azimuth:.2f}"
+        return compass_
+    except:
+        return "Exception Raised"

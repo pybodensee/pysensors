@@ -20,6 +20,8 @@ import Lomiri.Components 1.3
 import QtQuick.Layouts 1.3
 import Qt.labs.settings 1.0
 import io.thp.pyotherside 1.4
+import QtPositioning 5.11
+import QtSensors 5.11
 
 MainView {
     id: root
@@ -32,23 +34,49 @@ MainView {
 
     Page {
         anchors.fill: parent
-
         header: PageHeader {
             id: header
             title: i18n.tr('PySensors')
         }
 
-        Label {
+        Rectangle {
+            id: comapssRect
+            width: parent.width
+            height: 100
+            border.width: 1
+            radius: 5
+            color: "#3c3e42"
             anchors {
                 top: header.bottom
                 left: parent.left
                 right: parent.right
-                bottom: parent.bottom
             }
-            text: i18n.tr('Check the logs!')
+        
+            visible: compass.connectedToBackend
 
-            verticalAlignment: Label.AlignVCenter
-            horizontalAlignment: Label.AlignHCenter
+            Compass {
+                id: compass
+                active: true
+            }
+            Label {
+                id: compassLabel
+                anchors {
+                    margins: 20
+                    top: comapssRect.top
+                    left: parent.left
+                    right: parent.right
+                }
+                text: 'Compass Azimuth: Ready!'
+                verticalAlignment: Label.AlignVCenter
+            }
+        }
+        Timer {
+            id: compassTimer
+            interval: 1
+            repeat: true
+            running: true
+            triggeredOnStart: true
+            onTriggered: python.processSensors(compass)
         }
     }
 
@@ -57,15 +85,14 @@ MainView {
 
         Component.onCompleted: {
             addImportPath(Qt.resolvedUrl('../src/'));
-
-            importModule('example', function() {
-                console.log('module imported');
-                python.call('example.speak', ['Hello World!'], function(returnValue) {
-                    console.log('example.speak returned ' + returnValue);
-                })
-            });
+            importModule('fusion', function () {});
         }
 
+        function processSensors(parameters) {
+            call('fusion.format', [parameters], function(results){
+                    compassLabel.text = results;
+                });
+        }
         onError: {
             console.log('python error: ' + traceback);
         }

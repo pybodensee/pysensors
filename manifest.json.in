@@ -9,7 +9,7 @@
             "desktop":  "pysensors.desktop"
         }
     },
-    "version": "1.0.0",
+    "version": "0.0.1",
     "maintainer": "Faisal Shahzad <pybodensee@gmail.com>",
     "framework" : "@CLICK_FRAMEWORK@"
 }
