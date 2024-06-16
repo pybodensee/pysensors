@@ -24,7 +24,7 @@ import io.thp.pyotherside 1.4
 MainView {
     id: root
     objectName: 'mainView'
-    applicationName: 'pysensors.pybodensee'
+    applicationName: 'pysensors.pybodensee.com'
     automaticOrientation: true
 
     width: units.gu(45)

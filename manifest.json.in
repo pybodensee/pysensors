@@ -1,5 +1,5 @@
 {
-    "name": "pysensors.pybodensee",
+    "name": "pysensors.pybodensee.com",
     "description": "UT App using QML/Python",
     "architecture": "@CLICK_ARCH@",
     "title": "PySensors",
