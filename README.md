@@ -1,6 +1,13 @@
 # PySensors
 
-UT App using QML/Python
+This is a sample Ubuntu Touch App. This show how to write Ubuntu Touch/Liomiri Apps using Python. 
+
+This is a very basic example showing getting Compass data from you smartphone running Ubutu Touch (20.04). Current version only shows on how to extract compass data.
+
+This has been tested on Xiaomi Redmi Pro 9 (EEA) as shown below.
+
+![PySensors Running on Xiaomi Redmi Pro 9 with Ubunut Touch/Liomiri ](assets/screnshot_dark.png)
+
 
 ## License
 
