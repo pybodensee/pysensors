@@ -1,0 +1,15 @@
+{
+    "name": "pysensors.pybodensee",
+    "description": "UT App using QML/Python",
+    "architecture": "@CLICK_ARCH@",
+    "title": "PySensors",
+    "hooks": {
+        "pysensors": {
+            "apparmor": "pysensors.apparmor",
+            "desktop":  "pysensors.desktop"
+        }
+    },
+    "version": "1.0.0",
+    "maintainer": "Faisal Shahzad <pybodensee@gmail.com>",
+    "framework" : "@CLICK_FRAMEWORK@"
+}
